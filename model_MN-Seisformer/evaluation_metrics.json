@@ -1,0 +1,11 @@
+{
+    "val_mse": 0.4662134263797856,
+    "val_rmse": 0.6827982325546732,
+    "val_mae": 0.22859027355604405,
+    "val_peak_rmse": 2.942180762902106,
+    "val_peak_mae": 0.9981501774693843,
+    "best_val_loss": 0.8170429935517847,
+    "best_val_loss_epoch": 119,
+    "best_val_mse_loss": 0.4660029573804231,
+    "best_val_mse_loss_epoch": 101
+}

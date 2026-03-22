@@ -1,0 +1,74 @@
+{
+    "task_id": "pf09_patch08_s04_lr25e4",
+    "model_version": "PatchFusionS_compat",
+    "mode": "train",
+    "train_dataset_path": "./data/dataset/train_data_processed.pkl",
+    "val_dataset_path": "./data/dataset/val_data_processed.pkl",
+    "batch_size": 512,
+    "num_epochs": 100,
+    "learning_rate": 0.00025,
+    "weight_decay": 1e-06,
+    "patience": 40,
+    "seed": 42,
+    "device": "cuda:1",
+    "runtime_info": {
+        "python_version": "3.13.12",
+        "torch_version": "2.10.0+cu128",
+        "torch_cuda_version": "12.8",
+        "cuda_available": true,
+        "device": "cuda:1",
+        "cuda_device_count": 8,
+        "cuda_current_device": 1,
+        "cuda_device_name": "NVIDIA A100-SXM4-80GB"
+    },
+    "config_PatchFusion": {
+        "seq_len": 400,
+        "input_channels": 8,
+        "output_channels": 40,
+        "d_model": 128,
+        "lstm_hidden_dim": 128,
+        "lstm_n_layers": 3,
+        "n_heads": 16,
+        "d_ff": 256,
+        "n_layers": 3,
+        "patch_len": 8,
+        "stride": 4,
+        "dropout": 0.2,
+        "attn_dropout": 0.0,
+        "res_attention": true,
+        "norm": "BatchNorm",
+        "pre_norm": false,
+        "activation": "gelu",
+        "ca_n_heads": 8,
+        "ca_d_ff": 512
+    },
+    "config_StructuralEncoder": {
+        "embedding_dim": 128,
+        "hidden_dim": 64,
+        "num_gnn_layers": 2,
+        "gnn_type": "GCN",
+        "use_attention": true,
+        "dropout": 0.2
+    },
+    "warmup_epochs": 5,
+    "save_every": 50,
+    "gradient_accumulation_steps": 1,
+    "loss": {
+        "peak_weight": 0.05,
+        "lowfreq_weight": 0.0,
+        "peak_k": 10.0,
+        "n_low_bands": 10
+    },
+    "model_params": {
+        "total_params": 1925362,
+        "trainable_params": 1925362,
+        "frozen_params": 0,
+        "module_params": {
+            "global_stream": 356520,
+            "local_stream": 412864,
+            "structural_encoder": 47386,
+            "static_proj": 52400,
+            "cross_attention": 1056192
+        }
+    }
+}

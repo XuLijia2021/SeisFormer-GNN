@@ -1,0 +1,80 @@
+{
+    "task_id": "mn9_07_512_h16_conv7_mse_ep120",
+    "model_version": "mn_seisformer_compatible",
+    "paper_reference": "ZhouYing_2025_MN-Seisformer",
+    "mode": "train",
+    "train_dataset_path": "./data/dataset/train_data_processed.pkl",
+    "val_dataset_path": "./data/dataset/val_data_processed.pkl",
+    "batch_size": 256,
+    "num_epochs": 120,
+    "learning_rate": 0.0002,
+    "weight_decay": 1e-06,
+    "patience": 50,
+    "seed": 42,
+    "device": "cuda:6",
+    "runtime_info": {
+        "python_version": "3.13.12",
+        "torch_version": "2.10.0+cu128",
+        "torch_cuda_version": "12.8",
+        "cuda_available": true,
+        "device": "cuda:6",
+        "cuda_device_count": 8,
+        "cuda_current_device": 6,
+        "cuda_device_name": "NVIDIA A100-SXM4-80GB"
+    },
+    "compatibility_deviations": {
+        "no_quantile_output": true,
+        "no_autoregressive_rollout": true,
+        "no_simplified_model_input": true,
+        "no_history_response_input": true,
+        "channel_tokens_replace_physical_nodes": true,
+        "structural_encoder_adapter_used": true
+    },
+    "config_MainModel": {
+        "d_model": 512,
+        "output_dim": 40,
+        "time_steps": 400,
+        "num_time_layers": 2,
+        "num_time_heads": 16,
+        "num_node_layers": 2,
+        "num_node_heads": 16,
+        "dropout": 0.05,
+        "aux_loss_weight": 0.3
+    },
+    "config_StructuralEncoder": {
+        "embedding_dim": 512,
+        "hidden_dim": 64,
+        "num_gnn_layers": 2,
+        "gnn_type": "GCN",
+        "use_attention": true,
+        "dropout": 0.05
+    },
+    "config_GroundMotionEncoder": {
+        "input_dim": 8,
+        "d_model": 512,
+        "dropout": 0.05,
+        "max_positional_len": 400,
+        "learnable_pe": false,
+        "conv_kernel_size": 7
+    },
+    "warmup_epochs": 10,
+    "save_every": 0,
+    "gradient_accumulation_steps": 1,
+    "loss": {
+        "peak_weight": 0.0,
+        "lowfreq_weight": 0.0,
+        "peak_k": 10.0,
+        "n_low_bands": 10,
+        "aux_weight": 0.3
+    },
+    "model_params": {
+        "total_params": 22809354,
+        "trainable_params": 22809354,
+        "frozen_params": 0,
+        "module_params": {
+            "structural_encoder": 73114,
+            "gm_encoder": 1840128,
+            "main_model": 20896112
+        }
+    }
+}
