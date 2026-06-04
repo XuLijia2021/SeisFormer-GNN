@@ -1,0 +1,5 @@
+model_MN-Seisformer/*.pth filter=lfs diff=lfs merge=lfs -text
+model_ours/*.pth filter=lfs diff=lfs merge=lfs -text
+model_ours/*.tiff filter=lfs diff=lfs merge=lfs -text
+model_ours/val/*.tiff filter=lfs diff=lfs merge=lfs -text
+model_ours/test/*.tiff filter=lfs diff=lfs merge=lfs -text

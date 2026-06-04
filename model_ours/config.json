@@ -1,0 +1,69 @@
+{
+    "task_id": "sweep_36954626410c",
+    "mode": "train",
+    "train_dataset_path": "./data/dataset/train_data_processed.pkl",
+    "val_dataset_path": "./data/dataset/val_data_processed.pkl",
+    "batch_size": 512,
+    "num_epochs": 100,
+    "learning_rate": 0.0003,
+    "weight_decay": 1e-06,
+    "patience": 40,
+    "seed": 42,
+    "device": "cuda:0",
+    "runtime_info": {
+        "python_version": "3.13.12",
+        "torch_version": "2.10.0+cu128",
+        "torch_cuda_version": "12.8",
+        "cuda_available": true,
+        "device": "cuda:0",
+        "cuda_device_count": 1,
+        "cuda_current_device": 0,
+        "cuda_device_name": "NVIDIA H200"
+    },
+    "config_MainModel": {
+        "d_model": 256,
+        "output_dim": 40,
+        "num_self_attention_gm_layers": 3,
+        "num_heads_self_attention_gm_layer": 8,
+        "num_cross_attention_layers": 2,
+        "num_heads_cross_attention_layers": 4,
+        "num_deep_attn_layers": 3,
+        "num_heads_deep_attn_layer": 4,
+        "dropout": 0.1
+    },
+    "config_StructuralEncoder": {
+        "embedding_dim": 256,
+        "hidden_dim": 64,
+        "num_gnn_layers": 2,
+        "gnn_type": "GCN",
+        "use_attention": true,
+        "dropout": 0.1
+    },
+    "config_GroundMotionEncoder": {
+        "input_dim": 8,
+        "d_model": 256,
+        "dropout": 0.1,
+        "max_positional_len": 400,
+        "learnable_pe": false,
+        "conv_kernel_size": 0
+    },
+    "warmup_epochs": 5,
+    "save_every": 50,
+    "gradient_accumulation_steps": 1,
+    "loss": {
+        "peak_weight": 0.0,
+        "lowfreq_weight": 0.0,
+        "peak_k": 20.0,
+        "n_low_bands": 10
+    },
+    "model_params": {
+        "total_params": 6531522,
+        "trainable_params": 6531522,
+        "frozen_params": 0,
+        "module_params": {
+            "structural_encoder": 55962,
+            "gm_encoder": 2304,
+            "main_model": 6473256
+        }
+    }
+}
